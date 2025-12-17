@@ -1,5 +1,5 @@
 import React from 'react';
-import { Magnet, Battery, CheckCircle, Shield, Globe, Package } from 'lucide-react';
+import { Magnet, Battery, CheckCircle, Shield } from 'lucide-react';
 
 const MaterialsSection: React.FC = () => {
   return (

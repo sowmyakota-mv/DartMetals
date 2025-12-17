@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import Header from "./Header";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const HeroSection: React.FC = () => {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Ship, Plane, Truck, Globe } from 'lucide-react';
+import { Ship, Plane, Truck } from 'lucide-react';
 
 const Logistics: React.FC = () => {
   const shippingMethods = [

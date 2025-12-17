@@ -1,5 +1,5 @@
 import React from 'react';
-import { Factory, Car, Building, Ship, ArrowRight } from 'lucide-react';
+import { Factory, Car, Building, Ship } from 'lucide-react';
 
 const IndustriesServed: React.FC = () => {
   const industries = [
