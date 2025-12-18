@@ -45,10 +45,10 @@ const HeroSection: React.FC = () => {
   };
 
   return (
-    <section id="/" className="relative w-full h-screen overflow-hidden">
+    <section id="/" className="relative w-full  overflow-hidden">
       
       {/* Slides Container */}
-      <div className="relative w-full h-full">
+      <div className="relative w-full h-[85vh] min-h-[600px] max-h-[900px]">
         {slides.map((slide, index) => {
           const slidePosition = index - currentSlide;
           

@@ -4,10 +4,10 @@ import { MapPin, Mail, Phone, Globe, Facebook, Twitter, Linkedin, Instagram } fr
 const Footer: React.FC = () => {
   return (
     <footer className="bg-gray-900 text-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5">
         
         {/* Main Footer Content */}
-        <div className="grid md:grid-cols-4 gap-8 mb-8">
+        <div className="grid md:grid-cols-4 gap-8 mb-8 mt-8">
           
           {/* Company Info */}
           <div>
@@ -57,35 +57,41 @@ const Footer: React.FC = () => {
             </ul>
           </div>
 
-          {/* Contact Info */}
-          <div>
-            <h4 className="font-bold text-lg mb-4">Contact Info</h4>
-            <div className="space-y-3">
-              <div className="flex items-center">
-                <MapPin className="w-5 h-5 text-blue-400 mr-3" />
-                <span className="text-gray-400">London, United Kingdom</span>
-              </div>
-              <div className="flex items-center">
-                <Phone className="w-5 h-5 text-blue-400 mr-3" />
-                <span className="text-gray-400">+44 20 1234 5678</span>
-              </div>
-              <div className="flex items-center">
-                <Mail className="w-5 h-5 text-blue-400 mr-3" />
-                <span className="text-gray-400">info@metalexportpro.com</span>
-              </div>
-              <div className="flex items-center">
-                <Globe className="w-5 h-5 text-blue-400 mr-3" />
-                <span className="text-gray-400">www.metalexportpro.com</span>
-              </div>
-            </div>
+         {/* Contact Info */}
+<div>
+  <h4 className="font-bold text-lg mb-4">Contact Info</h4>
+  <div className="space-y-3">
+    <div className="flex items-start">
+      <MapPin className="w-5 h-5 text-blue-400 mr-3 mt-1 flex-shrink-0" />
+      <div>
+        <div className="text-gray-400">
+          <div className="font-medium text-gray-300 mb-1">DART Metals Private Limited</div>
+          <div className="text-sm">
+            Cambridge Vision Park,<br />
+            Chivers Way, Histon,<br />
+            Cambridge, CB24 9AD<br />
+            United Kingdom
           </div>
+        </div>
+      </div>
+    </div>
+    <div className="flex items-center">
+      <Phone className="w-5 h-5 text-blue-400 mr-3 flex-shrink-0" />
+      <span className="text-gray-400">+44 74052 14347</span>
+    </div>
+    <div className="flex items-center">
+      <Mail className="w-5 h-5 text-blue-400 mr-3 flex-shrink-0" />
+      <span className="text-gray-400">info@dartmetals.com</span>
+    </div>
+  </div>
+</div>
         </div>
 
         {/* Copyright & Links */}
-        <div className="pt-8 border-t border-gray-800">
+        <div className="pt-4 border-t border-gray-800">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="text-gray-400 text-sm mb-4 md:mb-0">
-              © {new Date().getFullYear()} MetalExport Pro. All rights reserved.
+              © {new Date().getFullYear()} DartMetals. All rights reserved.
             </div>
             <div className="flex space-x-6">
               <a href="#" className="text-gray-400 hover:text-white text-sm transition-colors">Privacy Policy</a>
@@ -96,7 +102,7 @@ const Footer: React.FC = () => {
         </div>
 
         {/* Certifications */}
-        <div className="mt-8 text-center">
+        <div className="mt-2 text-center">
           <div className="inline-flex flex-wrap justify-center gap-4 text-xs text-gray-500">
             <span>UK Registered Company</span>
             <span>•</span>

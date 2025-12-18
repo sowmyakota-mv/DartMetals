@@ -18,35 +18,39 @@ const Header: React.FC = () => {
   ];
 
   // Function to handle smooth scrolling to the TOP of the section
-const handleScrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, sectionId: string) => {
-  // If not on homepage, let the Link handle navigation
-  if (!isHomePage) return;
-  
-  e.preventDefault();
-  
-  // Close mobile menu if open
-  setIsMobileMenuOpen(false);
-  
-  // Find the target section
-  const targetSection = document.getElementById(sectionId);
-  
-  if (targetSection) {
-    // Get the exact top position of the section
-    const sectionTop = targetSection.offsetTop;
+  const handleScrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, sectionId: string) => {
+    // If not on homepage, let the Link handle navigation
+    if (!isHomePage) return;
     
-    // Calculate offset for fixed header
-    const headerHeight = 100; // Adjust based on your actual header height
+    e.preventDefault();
     
-    // Calculate scroll position (section top minus header height)
-    const scrollPosition = sectionTop - headerHeight;
+    // Close mobile menu if open
+    setIsMobileMenuOpen(false);
     
-    // Smooth scroll to the top of the section
-    window.scrollTo({
-      top: scrollPosition,
-      behavior: 'smooth'
-    });
-  }
-};
+    // Find the target section
+    const targetSection = document.getElementById(sectionId);
+    
+    if (targetSection) {
+      // Get the exact top position of the section
+      const sectionTop = targetSection.offsetTop;
+      
+      // Calculate offset for fixed header - increased to hide previous section completely
+      const headerHeight = 80; // Increased header height offset
+      
+      // Calculate scroll position - add extra offset to ensure previous section is not visible
+      const scrollPosition = sectionTop - headerHeight + 80; // Extra 20px buffer
+      
+      // Ensure we don't scroll past the document bottom
+      const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+      const finalScrollPosition = Math.min(scrollPosition, maxScroll);
+      
+      // Smooth scroll to the top of the section
+      window.scrollTo({
+        top: finalScrollPosition,
+        behavior: 'smooth'
+      });
+    }
+  };
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -54,7 +58,7 @@ const handleScrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, sectionId
 
   return (
     <header className={isHomePage ? "absolute top-0 left-0 w-full z-50" : "fixed top-0 left-0 w-full z-50 bg-white shadow-lg"}>
-      <div className="w-full px-8">
+      <div className="w-full px-4 sm:px-6 lg:px-8">
         
         {/* White rectangular box for homepage */}
         {isHomePage && (
@@ -66,27 +70,44 @@ const handleScrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, sectionId
           <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-[95%] h-full bg-white rounded-b-2xl shadow-lg"></div>
         )}
         
-        <div className={`flex justify-between items-center w-full relative z-10 py-4`}>
+        <div className={`flex justify-between items-center w-full relative z-10 py-3 md:py-4`}>
           
-          <div className="flex items-center">
-            <img 
-              src="/logo-transparent-png.png" 
-              alt="Landmark Creations Logo"
-              className="h-28 w-auto object-contain"
-            />
+          {/* Logo and Title Container */}
+          <div className="flex items-center space-x- md:space-x-">
+            {/* Logo */}
+            <div className="flex-shrink-0">
+              <img 
+                src="/logo-transparent-png.png" 
+                alt="DART Metals Logo"
+                className="h-16 w-16 md:h-20 md:w-20 lg:h-24 lg:w-24 object-contain"
+              />
+            </div>
+            
+            {/* Title and Tagline */}
+            <div className="flex flex-col">
+              <h1 className="text-lg md:text-xl lg:text-2xl font-bold text-gray-900 leading-tight">
+                DART Metals
+              </h1>
+              {/* <p className="text-xs md:text-sm text-gray-600 mt-0.5">
+                Private Limited
+              </p>
+              <p className="text-xs text-gray-500 mt-1 hidden md:block">
+                Global Metal Export Solutions
+              </p> */}
+            </div>
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center space-x-8">
+          <nav className="hidden lg:flex items-center space-x-6 xl:space-x-8">
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
                 onClick={(e) => handleScrollToSection(e, link.id)}
-                className={`font-bold transition-colors duration-200 cursor-pointer ${
+                className={`font-bold transition-colors duration-200 cursor-pointer whitespace-nowrap ${
                   link.isCta
-                    ? 'bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 shadow-md hover:shadow-lg transition-all duration-200'
-                    : isHomePage ? 'text-gray-800 hover:text-blue-600' : 'text-gray-800 hover:text-blue-600'
+                    ? 'bg-[#4caf50] text-white px-5 py-2.5 rounded-lg hover:bg-[#2E7D32] shadow-md hover:shadow-lg transition-all duration-200 text-xl'
+                    : isHomePage ? 'text-gray-800 hover:text-[#4caf50] text-sm' : 'text-gray-800 hover:text-[#4caf50] text-sm'
                 }`}
               >
                 {link.name}
@@ -121,7 +142,7 @@ const handleScrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, sectionId
         {/* Mobile Menu */}
         <div
           className={`lg:hidden transition-all duration-300 ease-in-out overflow-hidden relative z-10 ${
-            isMobileMenuOpen ? 'max-h-96 pb-4' : 'max-h-0'
+            isMobileMenuOpen ? 'pb-4' : 'max-h-0'
           }`}
         >
           <nav className={`flex flex-col space-y-4 rounded-lg p-6 mt-4 ${
@@ -134,8 +155,8 @@ const handleScrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, sectionId
                 onClick={(e) => handleScrollToSection(e, link.id)}
                 className={`font-lg transition-colors duration-200 text-center py-3 cursor-pointer ${
                   link.isCta
-                    ? 'bg-blue-600 text-white px-4 py-3 rounded-lg hover:bg-blue-700 shadow-md'
-                    : 'text-gray-800 hover:text-blue-600 border-b border-gray-100 last:border-b-0'
+                    ? 'bg-[#4caf50] text-white px-4 py-3 rounded-lg hover:bg-[#4caf50] shadow-md'
+                    : 'text-gray-800 hover:text-[#4caf50] border-b border-gray-100 last:border-b-0'
                 }`}
               >
                 {link.name}
