@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const Header: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
   const isHomePage = location.pathname === '/';
+  const navigate=useNavigate()
 
   const navLinks = [
     { name: 'Home', href: '/', id: 'hero' },
@@ -58,7 +59,7 @@ const Header: React.FC = () => {
 
   return (
     <header className={isHomePage ? "absolute top-0 left-0 w-full z-50" : "fixed top-0 left-0 w-full z-50 bg-white shadow-lg"}>
-      <div className="w-full px-4 sm:px-6 lg:px-8">
+      <div className="w-full h-[120px] px-4 sm:px-6 lg:px-8">
         
         {/* White rectangular box for homepage */}
         {isHomePage && (
@@ -75,17 +76,17 @@ const Header: React.FC = () => {
           {/* Logo and Title Container */}
           <div className="flex items-center space-x- md:space-x-">
             {/* Logo */}
-            <div className="flex-shrink-0">
+            {/* <div className="flex-shrink-0">
               <img 
                 src="/logo-transparent-png.png" 
                 alt="DART Metals Logo"
                 className="h-16 w-16 md:h-20 md:w-20 lg:h-24 lg:w-24 object-contain"
               />
-            </div>
+            </div> */}
             
             {/* Title and Tagline */}
-            <div className="flex flex-col">
-              <h1 className="text-lg md:text-xl lg:text-2xl font-bold text-gray-900 leading-tight">
+            <div className="mt-6 md:mt-2 flex flex-col">
+              <h1 onClick={()=>navigate("/")} className="text-lg md:text-xl lg:text-3xl font-bold text-gray-900 leading-tight">
                 DART Metals
               </h1>
               {/* <p className="text-xs md:text-sm text-gray-600 mt-0.5">
@@ -106,8 +107,8 @@ const Header: React.FC = () => {
                 onClick={(e) => handleScrollToSection(e, link.id)}
                 className={`font-bold transition-colors duration-200 cursor-pointer whitespace-nowrap ${
                   link.isCta
-                    ? 'bg-[#4caf50] text-white px-5 py-2.5 rounded-lg hover:bg-[#2E7D32] shadow-md hover:shadow-lg transition-all duration-200 text-xl'
-                    : isHomePage ? 'text-gray-800 hover:text-[#4caf50] text-sm' : 'text-gray-800 hover:text-[#4caf50] text-sm'
+                    ? 'bg-[#4caf50] text-white px-5 py-2.5 rounded-lg hover:bg-[#2E7D32] shadow-md hover:shadow-lg transition-all duration-200 text-med'
+                    : isHomePage ? 'text-gray-800 hover:text-[#4caf50] text-med' : 'text-gray-800 hover:text-[#4caf50] text-sm'
                 }`}
               >
                 {link.name}

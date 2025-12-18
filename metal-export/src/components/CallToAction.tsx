@@ -58,7 +58,7 @@ const CallToAction: React.FC = () => {
           <div className="lg:col-span-7">
             <div className="space-y-2">
               {/* Main Heading */}
-              <h2 className="text-2xl md:text-4xl font-bold">
+              <h2 className="text-2xl md:text-4xl font-bold mb-4">
                 Start Your Metal Export Journey
               </h2>
               

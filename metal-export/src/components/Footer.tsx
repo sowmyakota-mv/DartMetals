@@ -11,8 +11,8 @@ const Footer: React.FC = () => {
           
           {/* Company Info */}
           <div>
-            <h3 className="text-xl font-bold mb-4">
-              <span className="text-blue-400">Dart</span><span className="text-yellow-400">Metals</span>
+            <h3 className="text-4xl font-bold mb-4">
+              <span className="text-blue-400">Dart</span><span className="text-yellow-400"> Metals</span>
             </h3>
             <p className="text-gray-400 mb-4">
               UK-based scrap metal export company supplying quality ferrous and non-ferrous metals worldwide.
@@ -65,7 +65,7 @@ const Footer: React.FC = () => {
       <MapPin className="w-5 h-5 text-blue-400 mr-3 mt-1 flex-shrink-0" />
       <div>
         <div className="text-gray-400">
-          <div className="font-medium text-gray-300 mb-1">DART Metals Private Limited</div>
+          <div className="font-medium text-gray-300 mb-1">DART Metals</div>
           <div className="text-sm">
             Cambridge Vision Park,<br />
             Chivers Way, Histon,<br />
